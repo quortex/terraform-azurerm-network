@@ -29,7 +29,7 @@ resource "azurerm_subnet" "aks" {
   name                 = length(var.subnet_name) > 0 ? var.subnet_name : "${var.name}-aks"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.quortex.name
-  address_prefix       = var.subnet_address_prefix
+  address_prefixes     = [var.subnet_address_prefix]
 }
 
 # A route table must be configured on the AKS cluster subnet for multiple nodepools usage.
