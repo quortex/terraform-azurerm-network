@@ -16,7 +16,7 @@
 
 # A virtual network for Quortex resources.
 resource "azurerm_virtual_network" "quortex" {
-  name                = var.network_name
+  name                = length(var.network_name) > 0 ? var.network_name : var.name
   location            = var.location
   resource_group_name = var.resource_group_name
   address_space       = var.network_address_space
@@ -26,15 +26,15 @@ resource "azurerm_virtual_network" "quortex" {
 
 # A subnet for AKS cluster usage.
 resource "azurerm_subnet" "aks" {
-  name                 = var.subnet_name
+  name                 = length(var.subnet_name) > 0 ? var.subnet_name : "${var.name}-aks"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.quortex.name
-  address_prefix       = var.subnet_address_prefix
+  address_prefixes     = [var.subnet_address_prefix]
 }
 
 # A route table must be configured on the AKS cluster subnet for multiple nodepools usage.
 resource "azurerm_route_table" "quortex" {
-  name                = var.route_table_name
+  name                = length(var.route_table_name) > 0 ? var.route_table_name : "${var.name}-aks"
   location            = var.location
   resource_group_name = var.resource_group_name
 

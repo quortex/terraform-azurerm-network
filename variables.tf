@@ -29,10 +29,15 @@ variable "resource_group_name" {
   description = "The name of the resource group in which to create resources."
 }
 
+variable "name" {
+  type        = string
+  description = "A name from which the name of the resources will be chosen. Note that each resource name can be set individually."
+}
+
 variable "network_name" {
   type        = string
   description = "The name of the virtual network."
-  default     = "quortex"
+  default     = ""
 }
 
 variable "network_address_space" {
@@ -44,7 +49,7 @@ variable "network_address_space" {
 variable "subnet_name" {
   type        = string
   description = "The name of the subnet dedicated to AKS cluster."
-  default     = "quortex-aks"
+  default     = ""
 }
 
 variable "subnet_address_prefix" {
@@ -56,7 +61,7 @@ variable "subnet_address_prefix" {
 variable "route_table_name" {
   type        = string
   description = "The name of the route table of the subnet dedicated to AKS cluster."
-  default     = "quortex-aks"
+  default     = ""
 }
 
 variable "tags" {
