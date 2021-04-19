@@ -14,11 +14,6 @@
  * limitations under the License.
  */
 
-output "subscription_id" {
-  value       = var.subscription_id
-  description = "The Subscription ID used."
-}
-
 output "location" {
   value       = var.location
   description = "The location where resources have been created."
