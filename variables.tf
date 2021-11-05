@@ -38,7 +38,7 @@ variable "network_name" {
 variable "network_address_space" {
   type        = list(string)
   description = "The virtual network address space CIDRs."
-  default     = ["15.0.0.0/8"]
+  default     = ["10.0.0.0/8"]
 }
 
 variable "subnet_name" {
@@ -50,7 +50,7 @@ variable "subnet_name" {
 variable "subnet_address_prefix" {
   type        = string
   description = "The AKS cluster subnet address space CIDR."
-  default     = "15.0.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
 variable "route_table_name" {
@@ -60,7 +60,7 @@ variable "route_table_name" {
 }
 
 variable "tags" {
-  type        = map
+  type        = map(any)
   description = "Tags to apply to resources. A list of key->value pairs."
   default     = {}
 }
