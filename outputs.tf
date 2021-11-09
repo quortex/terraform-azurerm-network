@@ -29,6 +29,11 @@ output "virtual_network_name" {
   description = "The virtual network name."
 }
 
+output "virtual_network_id" {
+  value       = azurerm_virtual_network.quortex.id
+  description = "The virtual network id."
+}
+
 output "cluster_subnet_id" {
   value       = azurerm_subnet.aks.id
   description = "The AKS cluster dedicated subnet identifier."
