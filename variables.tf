@@ -60,7 +60,13 @@ variable "route_table_name" {
 }
 
 variable "tags" {
-  type        = map
+  type        = map(any)
   description = "Tags to apply to resources. A list of key->value pairs."
   default     = {}
+}
+
+variable "private_endpoint_network_policies" {
+  type        = string
+  description = "Enable or Disable network policies for the private endpoint on the subnet. Possible values are Disabled, Enabled, NetworkSecurityGroupEnabled and RouteTableEnabled. Defaults is set to Enabled to keep previous behavior"
+  default     = "Enabled"
 }
